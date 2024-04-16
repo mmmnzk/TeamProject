@@ -46,8 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			from
 				(
 		 			select 
-		 					/*+INDEX(tbl_reply idx_reply)*/
-		 					rownum rn, rno, bno, reply, replyer, replyDate, updatedate
+		 					/*+INDEX(tbl_reply idx_reply)*/ rownum rn, 
+		 					rno, bno, reply, replyer, replyDate, updatedate
 		 			from
 		 					 tbl_reply
 		 			where 

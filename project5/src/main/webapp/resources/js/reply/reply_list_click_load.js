@@ -34,6 +34,8 @@ $(function(){
 	});
 	var bnoValue = $("#operForm").find("#bno").val();
 	var replyUL = $(".chat");
+	var pageUI = $(".panel-footer");
+	var pageNumReply = $("input#pageNumReply");
 	
 	modalModBtn.on("click",function(e){
 		
@@ -45,8 +47,11 @@ $(function(){
 			
 			alert(result);
 			modal.modal("hide");
+			
+			var pageNum = pageNumReply.val();
+			
 //			showList(1);
-			replyList.showList(1,bnoValue,replyUL);
+			replyList.showList(pageNum,bnoValue,replyUL,pageUI);
 		});
 	});
 	
@@ -58,8 +63,11 @@ $(function(){
 			
 			alert(result);
 			modal.modal("hide");
+			
+			var pageNum = pageNumReply.val();
+			
 //			showList(1);
-			replyList.showList(1,bnoValue,replyUL);
+			replyList.showList(pageNum,bnoValue,replyUL,pageUI);
 
 
 		});

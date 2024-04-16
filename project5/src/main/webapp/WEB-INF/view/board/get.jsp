@@ -150,10 +150,10 @@
 								<ul class="chat">
 								</ul>
 							</div>
-
-							<div class="panel-footer">
-							</div>
 							
+							<div class="panel-footer">
+								<input type='hidden' id='pageNumReply' value='1'>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -164,6 +164,7 @@
 					<script type="text/javascript" src="/resources/js/reply/reply_list.js"></script>
 					<script type="text/javascript" src="/resources/js/reply/reply_list_load.js"></script>
 					<script type="text/javascript" src="/resources/js/reply/reply_list_click_load.js"></script>
+					<script type="text/javascript" src="/resources/js/reply/reply_page_click_load.js"></script>
 					
 <%--             		<%@include file="../reply/reply_ajax_test.jsp" %> --%>
             </div>
