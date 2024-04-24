@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.domain.BoardVO;
+import com.example.domain.CompanyVO;
 import com.example.domain.Criteria;
-import com.example.mapper.BoardMapper;
+import com.example.mapper.CompanyMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -16,33 +16,33 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 
-public class BoardServiceImpl implements BoardService {
+public class CompanyServiceImpl implements CompanyService {
 	
 //	@Setter(onMethod_=@Autowired) 대신 -> @AllArgsConstructor
-	private BoardMapper mapper;
+	private CompanyMapper mapper;
 
 	@Override
-	public void register(BoardVO board) {
-		log.info("register..." +board);
-		mapper.insertSelectKey(board);
+	public void register(CompanyVO company) {
+		log.info("register..." +company);
+		mapper.insertSelectKey(company);
 	}
 
 	@Override
-	public BoardVO get(Long bno) {
-		log.info("get..."+bno);
-		return mapper.read(bno);
+	public CompanyVO get(Long cno) {
+		log.info("get..."+cno);
+		return mapper.read(cno);
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
-		log.info("modify..."+board);
-		return mapper.update(board)==1;
+	public boolean modify(CompanyVO company) {
+		log.info("modify..."+company);
+		return mapper.update(company)==1;
 	}
 
 	@Override
-	public boolean remove(Long bno) {
-		log.info("remove..."+bno);
-		return mapper.delete(bno)==1;	}
+	public boolean remove(Long cno) {
+		log.info("remove..."+cno);
+		return mapper.delete(cno)==1;	}
 
 //	@Override
 //	public List<BoardVO> getList() {
@@ -50,7 +50,7 @@ public class BoardServiceImpl implements BoardService {
 //		return mapper.getList();
 //	}
 	@Override
-	public List<BoardVO> getList(Criteria cri){
+	public List<CompanyVO> getList(Criteria cri){
 		log.info("get List with criteria: " + cri);
 		
 		return mapper.getListWithPaging(cri);

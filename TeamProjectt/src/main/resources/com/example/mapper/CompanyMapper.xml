@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.mapper.BoardMapper">
+<mapper namespace="com.example.mapper.CompanyMapper">
 
 	<sql id="criteria">
 		<trim prefix="(" suffix=")AND" prefixOverrides="OR">
@@ -24,57 +24,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</foreach>
 			</trim>
 	</sql>
-	<select id="getList" resultType="com.example.domain.BoardVO">
+	<select id="getList" resultType="com.example.domain.CompanyVO">
 	<![CDATA[
-		select * from tbl_board where bno > 0
+		select * from company_info where cno > 0
 		]]>
 	</select>
 
 	<insert id="insert">
 		insert into 
-				tbl_board (bno,title,content,writer)
+				company_info (cno,c_name,owner)
 		values
-			(seq_board.nextval,#{title},#{content},#{writer})
+			(seq_company_info.nextval,#{cno},#{c_name},#{owner})
 	</insert>
 	
 	<insert id="insertSelectKey">
-		<selectKey keyProperty="bno" order="BEFORE" resultType="Long">
-			select seq_board.nextval from dual
+		<selectKey keyProperty="cno" order="BEFORE" resultType="Long">
+			select seq_company_info.nextval from dual
 		</selectKey>
 		insert into
-					tbl_board (bno,title,content,writer)
+					company_info (cno,c_name,owner)
 		values
-					(#{bno},#{title},#{content},#{writer})
+					(#{cno},#{c_name},#{owner})
 		
 	</insert>
 	
-	<select id="read" resultType="com.example.domain.BoardVO">
-		select * from tbl_board where bno = #{bno}
+	<select id="read" resultType="com.example.domain.CompanyVO">
+		select * from company_info where cno = #{cno}
 	</select>
 
 	<delete id="delete">
-		delete from tbl_board where bno = #{bno}
+		delete from company_info where cno = #{cno}
 	</delete>
 	<update id="update">
 		update
-				tbl_board
+				company_info
 		set
-				title = #{title}, content=#{content}, writer = #{writer}, updateDate = sysdate
+				c_name = #{c_name}, owner=#{owner}, updateDate = sysdate
 		where
-				bno = #{bno}
+				cno = #{cno}
 	
 	</update>
 	
-	<select id="getListWithPaging" resultType="com.example.domain.BoardVO">
+	<select id="getListWithPaging" resultType="com.example.domain.CompanyVO">
 		<![CDATA[
 			select
-					bno, title, content, writer, regdate, updatedate
+					cno, c_name, owner, profit, established_date, information
 			from (
 					select
-							/*+INDEX_DESC(tbl_board pk_board)+*/ rownum rn,
-							bno, title, content, writer, regdate, updatedate
+							/*+INDEX_DESC(company_info pk_company_info)+*/ rownum rn,
+							cno, c_name, owner, profit, established_date, information
 					from
-						tbl_board
+						company_info
 					where
 		]]>
 			<include refid="criteria"></include>
@@ -106,7 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-			select count(*) from tbl_board where
+			select count(*) from company_info where
 			<include refid="criteria"></include>
 <!-- 			<trim prefix="(" suffix=")AND" prefixOverrides="OR"> -->
 <!-- 				<foreach item='type' collection="typeArr"> -->
@@ -125,7 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 					</trim> -->
 <!-- 				</foreach> -->
 <!-- 			</trim> -->
-			 bno > 0
+			 cno > 0
 	</select>
 	
 </mapper>

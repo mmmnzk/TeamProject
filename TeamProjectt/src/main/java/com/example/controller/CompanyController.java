@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.domain.BoardVO;
+import com.example.domain.CompanyVO;
 import com.example.domain.Criteria;
 import com.example.domain.PageDTO;
-import com.example.service.BoardService;
+import com.example.service.CompanyService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -21,16 +21,30 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/board/*")
+@RequestMapping("/company/*")
 @AllArgsConstructor
-
-public class BoardController {
+public class CompanyController {
 	
-	private BoardService service;
+	private CompanyService service;
 	
 	@GetMapping("/register")
 	public void register() {
 		
+	}
+	
+	
+	
+	
+	@GetMapping("/companyList")
+	public void companyList(Criteria cri, Model model) {
+		log.info("list: "+cri);
+		model.addAttribute("list",service.getList(cri));
+		
+		int total = service.getTotal(cri);
+				
+				log.info("total: "+total);
+				
+				model.addAttribute("pageMaker", new PageDTO(cri,total));
 	}
 	
 //	@GetMapping("/list")//1.목록 조회
@@ -39,7 +53,7 @@ public class BoardController {
 //		model.addAttribute("list",service.getList());
 //	}
 	
-	@GetMapping("/list")
+//	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		
 		log.info("list: "+cri);
@@ -53,26 +67,26 @@ public class BoardController {
 		model.addAttribute("pageMaker", new PageDTO(cri,total));
 	}
 	
-	@PostMapping("/register")//2.입력
-	public String register(BoardVO board, RedirectAttributes rttr) {
+//	@PostMapping("/register")//2.입력
+	public String register(CompanyVO company, RedirectAttributes rttr) {
 		
-		log.info("register: " + board);
-		service.register(board);
-		rttr.addFlashAttribute("result", board.getBno());
-		return "redirect:/board/list";
+		log.info("register: " + company);
+		service.register(company);
+		rttr.addFlashAttribute("result", company.getCno());
+		return "redirect:/company/list";
 	}
 	
 //	@GetMapping("/get")//3.검색
 	@GetMapping({"/get","/modify"})//3.검색
-	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+	public void get(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("/get");
-		model.addAttribute("board", service.get(bno));
+		model.addAttribute("company", service.get(cno));
 	}
-	@PostMapping("/modify")//4.수정
-	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		log.info("modify:"+board);
+//	@PostMapping("/modify")//4.수정
+	public String modify(CompanyVO company, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		log.info("modify:"+company);
 		
-		if(service.modify(board)) {
+		if(service.modify(company)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -84,16 +98,16 @@ public class BoardController {
 		
 		
 		
-		return "redirect:/board/list"+cri.getListLink();
+		return "redirect:/company/list"+cri.getListLink();
 		}
 		
 //	@PostMapping("/remove")//5.삭제
 //	@GetMapping("/remove")//5.삭제
 	@RequestMapping(value="/remove",
 					method= {RequestMethod.GET,RequestMethod.POST})
-	public String remove(@RequestParam("bno")Long bno, Criteria cri, RedirectAttributes rttr) {
-		log.info("remove...."+bno);
-		if(service.remove(bno)) {
+	public String remove(@RequestParam("cno")Long cno, Criteria cri, RedirectAttributes rttr) {
+		log.info("remove...."+cno);
+		if(service.remove(cno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -103,7 +117,7 @@ public class BoardController {
 //		rttr.addAttribute("type",cri.getType());
 //		rttr.addAttribute("keyword",cri.getKeyword());
 		
-		return"redirect:/board/list"+cri.getListLink();
+		return"redirect:/company/list"+cri.getListLink();
 	}
 }
 
