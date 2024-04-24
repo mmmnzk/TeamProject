@@ -37,8 +37,8 @@ public class CompanyController {
 	
 	@GetMapping("/companyList")
 	public void companyList(Criteria cri, Model model) {
-		log.info("list: "+cri);
-		model.addAttribute("list",service.getList(cri));
+		log.info("companyList: "+cri);
+		model.addAttribute("companyList",service.getList(cri));
 		
 		int total = service.getTotal(cri);
 				

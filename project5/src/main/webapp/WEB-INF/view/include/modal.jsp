@@ -42,7 +42,7 @@
 				}
 			$("#confirmModal").modal("show");
 		}
-		var actionForm = $("#actionForm");
+		
 		
 		$(".page-item a").on(
 				"click",
@@ -57,6 +57,7 @@
 					actionForm.submit();
 				});
 		
+		var actionForm = $("#actionForm");
 		$(".move").on(
 		"click",
 		function(e) {

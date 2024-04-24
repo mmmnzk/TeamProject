@@ -1,5 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>companyList</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+   <script src="/TeamProjectt/resources/jquery.min.js"></script>
+
+
 </head>
 <body>
 <nav class="shadow p-2 bg-body-tertiary border-bottom">
@@ -108,10 +114,10 @@
      </div>
      <div class="row">
      <form class="d-flex col-12 col-sm-6 col-md-3 " style=" margin:auto; "action="/company/companyList" method="get">
-     <input class="form-control me-sm-2" type="text" placeholder="Search" name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'/>
-     <input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum }"/>'/>
-      <input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount }"/>'/>
-        <button type="button" class="btn btn-warning" type="submit">Search</button>
+	     <input class="form-control me-sm-2" type="text" placeholder="Search" name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'/>
+	     <input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum }"/>'/>
+	     <input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount }"/>'/>
+	     <button type="button" class="btn btn-warning" type="submit">Search</button>
      </form>
      </div>
      
@@ -128,30 +134,24 @@
 			     <table class="table table-hover" style="margin:auto; ">
 			       <thead style="text-align:center">
 			         <tr>
-			           <th scope="col">기업명</th>
 			           <th scope="col">번호</th>
+			           <th scope="col">기업명</th>
 			           <th scope="col">평가 금액</th>
 			         </tr>
 			       </thead>
-			       
+			        <tbody style="text-align:center">
 			       <c:forEach items="${companyList}" var="company">
-		        		<tbody style="text-align:center">
-		                     	<tr class="table-Default">>
-		                     		<th scope="row"><c:out value="${company.c_name}" /></th>
-		                     		<td><c:out value="${company.cno}" /></td>
-		                     		<td>
-<%--                                 		<a href='/board/get?bno=<c:out value="${board.bno }"/>'> --%>
-<%--                                 		<c:out value="${board.title }"/> --%>
-<!--                                 		</a> -->
-		
-									<a class='move' href='<c:out value="${company.c_name }"/>'>
+		                     	<tr scope="row" class="table-Default">
+		                     		<th><c:out value="${company.cno}" /></th>
+		                     		<th >
+									<a class='move' href='<c:out value="${company.cno }"/>'>
 										<c:out value="${company.c_name }"/>
 									</a>
-	                        		</td>
-	                        		<td><c:out value="${company.profit }"/></td>
+	                        		</th>
+	                        		<th><c:out value="${company.profit }"/></th>
 	                        	</tr>
-		         		</tbody>
                      </c:forEach>
+                     </tbody>
 			         </table>
                  </div>
           </div>
@@ -166,11 +166,33 @@
                     
                  </div>
           </div>
+          
+          <form id='actionForm' action="/company/list" method='get'>
+				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				
+				<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+				<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+			</form>
 
 
    </div>
    
-   
+ <script>
+ 
+ 		var actionForm = $("#actionForm");
+ 		
+		$(".move").on(
+		"click",
+		function(e) {
+			
+			e.preventDefault();
+			actionForm.append("<input type='hidden' name='cno' value='"
+							+$(this).attr("href")+"'>");
+			actionForm.attr("action","/board/get");
+			actionForm.submit();
+		});
+ </script>  
 
   
 
