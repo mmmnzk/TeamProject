@@ -1,5 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,11 +122,12 @@
      
    <div class="row" >
          <div class="box col-lg-8 shadow mb-4" style=" margin:30px; width:1290px; height:1000px; ">
-           <div class="widget-user-header text-white" style="background: url('qqq.png') center center; height:300px;">
+           <div class="widget-user-header text-white" style="background: url('/resources/img/company_img.png') center center; height:300px;">
             <div class="box_head" style="margin: 10px 0px 0px 0px;"> 
             
 <div class="img-overlay">
-<h3 class="title text-white">회사 이름</h3>
+<%--  <c:forEach items="${company}" var="company"> --%>
+<h3 class="title text-white"><c:out value="${company.c_name}"/></h3>
 <hr style="border: solid 2px; width:30%;">
 <p class="text pb-1 pt-1 text-white">
 <h3>회사 정보 </h3>
@@ -134,7 +137,7 @@
 <!--              <h3 style="position: absolute; margin:50px 20px;">회사 정보</h3> -->
 <!--             <img src="qqq.png" style="width:1270px; height:300px; margin:auto;"> -->
             </div>
-             <div><img src="P1234.png" style="width:100px; height:100px; position: absolute; margin:-50px 80px;">
+             <div><img src="/resources/img/samsung.png" style="width:100px; height:100px; position: absolute; margin:-50px 80px;">
              </div>
             <div class=" " >
    <div class="c_info" style="max-height: 300px; overflow:auto; margin:80px;"> 
@@ -143,79 +146,68 @@
      
       <div class="row justify-content-between">
          <div class="col-6" align="left">
-            대표:      ddddd   <br>
-            주력 기업 :ddddddddddddd   <br> 
-            산업평가 등급 : ddd<br> 
+            대표:      <c:out value="${company.owner}"/>   <br>
+            주력 기업 :<c:out value="${company.c_name}"/>   <br> 
+            산업평가 등급 : <c:out value="${company.profit}"/><br> 
          </div>
          <div class="col-6" align="left">
-            설립일자 :ddddddddddd <br>
-            주소 :ddddddddddddddddddddddddd<br>
-            동종 업계 경쟁 순위:dddddd<br>
+            설립일자 :<c:out value="${company.established_date}"/> <br>
+            주소 :<c:out value="${company.c_adress}"/><br>
+            동종 업계 경쟁 순위: <br>
          </div>
       </div>
                     </div>
                     </div>
                  </div>
                 
-                
+<%--  </c:forEach> --%>
                       
 <div class="col-md-12">
 <div class="card">
 <div class="card-header p-2">
 <ul class="nav nav-pills">
-<li class="nav-item"><a class="nav-link active" href="" data-toggle="tab">회원 평가</a></li>
-<li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">관련 게시글</a></li>
+<li class="nav-item">관련 게시글</li>
 </ul>
 </div>
 </div>
-</div>
+
 
 
 <div class="post">
 <div class="user-block">
-<img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-<span class="username">
-<a href="#">Jonathan Burke Jr.</a>
-<a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-</span>
-<p class="description">Shared publicly - 7:30 PM today</p>
+<img class="img" src="/resources/img/user_img.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
+<%-- <c:forEach items="${list}" var="c_board"> --%>
+<span class="username"><c:out value="${c_board.writer}"/></span>
+<span class="description">(<c:out value="${c_board.regdate}"/>)</span>
 </div>
 
 <p>
-Lorem ipsum represents a long-held tradition for designers,
-typographers and the like.
+<a href="#" class="companyBoard"><c:out value="${c_board.title}"/></a> 
 </p>
 <p>
-<a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
 <span class="float-right">
 <a href="#" class="link-black text-sm">
 <i class="far fa-comments mr-1"></i> Comments (5)
 </a>
 </span>
+
 </p>
+
 </div>
 
 
 <div class="post clearfix">
 <div class="user-block">
-<img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-<span class="username">
-<a href="#">Sarah Ross</a>
-<a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-</span>
-<span class="description">Sent you a message - 3 days ago</span>
+<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
+<span class="username">이순신</span>
+<span class="description">(7:30 PM today)</span>
 </div>
 
 <p>
-Lorem ipsum represents a long-held tradition for designers,
-typographers and the like. Some people hate it and argue for
-its demise, but others ignore the hate as they create awesome
-tools to help create filler text for everyone from bacon lovers
-to Charlie Sheen fans.
+게시물 제목
 </p>
 <p>
-<a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
 <span class="float-right">
 <a href="#" class="link-black text-sm">
@@ -224,6 +216,30 @@ to Charlie Sheen fans.
 </span>
 </p>
 </div>
+
+<div class="post clearfix">
+<div class="user-block">
+<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
+<span class="username">강감찬</span>
+<span class="description">(7:30 PM today)</span>
+</div>
+
+<p>
+게시물 제목
+</p>
+<p>
+<a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+<span class="float-right">
+<a href="#" class="link-black text-sm">
+<i class="far fa-comments mr-1"></i> Comments (5)
+</a>
+</span>
+</p>
+</div>
+
+</div>
+
+
   </div>
  <div class=" card col-lg-8 shadow mb-4" style="margin:30px; width:390px; height:400px;">
             <div class="card-head" style="margin: 10px 0px 0px 0px;"> 

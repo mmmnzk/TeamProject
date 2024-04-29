@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/company/*")
 @AllArgsConstructor
-public class CompanyController {
+public class CompanyBardController {
 	
 	private CompanyService service;
 	
@@ -35,21 +35,21 @@ public class CompanyController {
 	
 	
 	
-	@GetMapping("/companyList")
-	public void companyList(Criteria cri, Model model) {
-		log.info("companyList: "+cri);
-		model.addAttribute("companyList",service.getList(cri));
-		
-		int total = service.getTotal(cri);
-				
-				log.info("total: "+total);
-				
-				model.addAttribute("pageMaker", new PageDTO(cri,total));
-	}
-	@GetMapping({"/company","/modify"})//3.검색
-	public void company(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
-		log.info("/company");
-		model.addAttribute("company", service.get(cno));
+//	@GetMapping("/companyBoard")
+//	public void companyBoard(Criteria cri, Model model) {
+//		log.info("companyBoard: " + cri);
+//		model.addAttribute("companyBoard", service.getList(cri));
+//
+//		int total = service.getTotal(cri);
+//
+//		log.info("total: " + total);
+//
+//		model.addAttribute("pageMaker", new PageDTO(cri, total));
+//	}
+	@GetMapping({"/companyBoard","/modify"})//3.검색
+	public void companyBoard(@RequestParam("c_bno") Long c_bno, @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("/companyBoard");
+		model.addAttribute("companyBoard", service.get(c_bno));
 		
 	}
 //	@GetMapping("/list")//1.목록 조회

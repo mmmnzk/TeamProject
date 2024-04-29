@@ -189,7 +189,7 @@
 			e.preventDefault();
 			actionForm.append("<input type='hidden' name='cno' value='"
 							+$(this).attr("href")+"'>");
-			actionForm.attr("action","/board/get");
+			actionForm.attr("action","/company/company");
 			actionForm.submit();
 		});
  </script>  
