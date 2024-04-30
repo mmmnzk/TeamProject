@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.Criteria;
-import com.example.domain.ReplyPageDTO;
-import com.example.domain.ReplyVO;
-import com.example.mapper.ReplyMapper;
+import com.example.domain.CompanyReplyPageDTO;
+import com.example.domain.CompanyReplyVO;
+import com.example.mapper.CompanyReplyMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -16,18 +16,18 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 
-public class ReplyServiceImpl implements ReplyService{
+public class CompanyReplyServiceImpl implements CompanyReplyService{
 	
-	private ReplyMapper mapper;
+	private CompanyReplyMapper mapper;
 	
 	@Override
-	public int register(ReplyVO vo) {
+	public int register(CompanyReplyVO vo) {
 		log.info("register..." + vo);
 		return mapper.insert(vo);
 	}
 	
 	@Override
-	public ReplyVO get(Long rno) {
+	public CompanyReplyVO get(Long rno) {
 		
 		log.info("get..." + rno);
 		
@@ -35,7 +35,7 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 	
 	@Override
-	public int modify(ReplyVO vo) {
+	public int modify(CompanyReplyVO vo) {
 		log.info("modify..." + vo);
 		
 		return mapper.update(vo);
@@ -57,9 +57,9 @@ public class ReplyServiceImpl implements ReplyService{
 //	}
 	
 	@Override
-	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
-		return new ReplyPageDTO(
-								mapper.getCountByBno(bno),
+	public CompanyReplyPageDTO getListPage(Criteria cri, Long bno) {
+		return new CompanyReplyPageDTO(
+								mapper.getCountByRno(bno),
 								mapper.getListWithPaging(cri, bno));
 	}
 	

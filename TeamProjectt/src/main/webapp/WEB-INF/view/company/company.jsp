@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>company</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+<script src="/TeamProjectt/resources/jquery.min.js"></script>
 
 
 </head>
@@ -163,63 +163,70 @@
 <%--  </c:forEach> --%>
                       
 <div class="col-md-12">
-<div class="card">
+<div class="card ">
 <div class="card-header p-2">
 <ul class="nav nav-pills">
 <li class="nav-item">관련 게시글</li>
 </ul>
 </div>
+<!-- <div class="card-body" style="max-height: 300px; overflow:auto;">  -->
+<!-- 			     <table class="table table-hover" style="margin:auto; "> -->
+<!-- 			       <thead style="text-align:center"> -->
+			       
+<!-- 			         <tr> -->
+<!-- 			           <th scope="col">제목</th> -->
+<!-- 			           <th scope="col">작성자</th> -->
+<!-- 			           <th scope="col">작성일</th> -->
+<!-- 			         </tr> -->
+<!-- 			       </thead> -->
+<%-- 			       <c:forEach items="${list}" var="board"> --%>
+<!-- 			        <tbody style="text-align:center"> -->
+<!-- 		                     	<tr scope="row" class="table-Default"> -->
+<!-- 		                     		<th > -->
+<%-- 									<a class='move' href='<c:out value="${c_board.bno }"/>'> --%>
+<%-- 										<c:out value="${c_board.title }"/> --%>
+<!-- 									</a> -->
+<!-- 	                        		</th> -->
+<%-- 		                     		<th><c:out value="${c_board.writer}" /></th> --%>
+<%-- 	                        		<th><c:out value="${c_board.regdate }"/></th> --%>
+<!-- 	                        	</tr> -->
+<!--                      </tbody> -->
+<%--                      </c:forEach> --%>
+<!-- 			         </table> -->
+<!--                  </div> -->
 </div>
 
 
 
-<div class="post">
+
+
+
+<div class="post clearfix">
+<div class="user-block">
+<c:forEach items="${list}" var="c_board">
+<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
+<span class="username"><c:out value="${c_board.writer}"/></span>
+<span class="description">(<c:out value="${c_board.regdate }"/>)</span>
+</div>
+
+<p>
+<a class='move' href='<c:out value="${c_board.bno }"/>'>
+										<c:out value="${c_board.title }"/>
+</p>
+<p>
+<a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+<span class="float-right">
+<a href="#" class="link-black text-sm">
+<i class="far fa-comments mr-1"></i> Comments (5)
+</a>
+</span>
+</p>
+</c:forEach>
+</div>
+
+<div class="post clearfix">
 <div class="user-block">
 <img class="img" src="/resources/img/user_img.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
-<%-- <c:forEach items="${list}" var="c_board"> --%>
-<span class="username"><c:out value="${c_board.writer}"/></span>
-<span class="description">(<c:out value="${c_board.regdate}"/>)</span>
-</div>
-
-<p>
-<a href="#" class="companyBoard"><c:out value="${c_board.title}"/></a> 
-</p>
-<p>
-<a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-<span class="float-right">
-<a href="#" class="link-black text-sm">
-<i class="far fa-comments mr-1"></i> Comments (5)
-</a>
-</span>
-
-</p>
-
-</div>
-
-
-<div class="post clearfix">
-<div class="user-block">
-<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
-<span class="username">이순신</span>
-<span class="description">(7:30 PM today)</span>
-</div>
-
-<p>
-게시물 제목
-</p>
-<p>
-<a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-<span class="float-right">
-<a href="#" class="link-black text-sm">
-<i class="far fa-comments mr-1"></i> Comments (5)
-</a>
-</span>
-</p>
-</div>
-
-<div class="post clearfix">
-<div class="user-block">
-<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
 <span class="username">강감찬</span>
 <span class="description">(7:30 PM today)</span>
 </div>

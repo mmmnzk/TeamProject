@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.domain.Criteria;
-import com.example.domain.ReplyVO;
+import com.example.domain.CompanyReplyVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -20,19 +20,19 @@ import lombok.extern.log4j.Log4j;
 //Java Config
 @ContextConfiguration(classes= {com.example.config.RootConfig.class})
 @Log4j
-public class ReplyMapperTests {
+public class CompanyReplyMapperTests {
 	
 	//테스트 전에 해당 번호의 게시물이 존재하는지 반드시 확인할 것
 	private Long[] bnoArr = {71L,72L,63L,64L,77L};
 	
 	@Setter(onMethod_=@Autowired)
-	private ReplyMapper mapper;
+	private CompanyReplyMapper mapper;
 	
 //	@Test
 	public void testCreate() {
 		
 		IntStream.rangeClosed(1, 10).forEach(i -> {
-			ReplyVO vo = new ReplyVO();
+			CompanyReplyVO vo = new CompanyReplyVO();
 			
 			//게시물의 번호
 			vo.setBno(bnoArr[i%5]);
@@ -47,7 +47,7 @@ public class ReplyMapperTests {
 		
 		Long targetRno=4L;
 		
-		ReplyVO vo = mapper.read(targetRno);
+		CompanyReplyVO vo = mapper.read(targetRno);
 		
 		log.info(vo);
 	}
@@ -70,7 +70,7 @@ public class ReplyMapperTests {
 //		Long targetRno = 14L;		
 //		ReplyVO vo = mapper.read(targetRno);
 		
-		ReplyVO vo = new ReplyVO();
+		CompanyReplyVO vo = new CompanyReplyVO();
 		vo.setRno(14L);
 		vo.setBno(272L);
 		vo.setReply("ㅋㅋ");
@@ -88,7 +88,7 @@ public class ReplyMapperTests {
 		Criteria cri = new Criteria();
 		
 		//7L
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+		List<CompanyReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
 		
 		replies.forEach(reply -> log.info(reply));
 	}
@@ -99,7 +99,7 @@ public class ReplyMapperTests {
 		Criteria cri = new Criteria(2,10);
 		
 		//7L
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, 219L);
+		List<CompanyReplyVO> replies = mapper.getListWithPaging(cri, 219L);
 		
 		replies.forEach(reply -> log.info(reply));
 	}

@@ -28,9 +28,9 @@ public class CompanyBoardServiceImpl implements CompanyBoardService {
 	}
 
 	@Override
-	public CompanyBoardVO get(Long c_bno) {
-		log.info("get..."+c_bno);
-		return mapper.read(c_bno);
+	public CompanyBoardVO get(Long bno) {
+		log.info("get..."+bno);
+		return mapper.read(bno);
 	}
 
 	@Override
@@ -40,9 +40,9 @@ public class CompanyBoardServiceImpl implements CompanyBoardService {
 	}
 
 	@Override
-	public boolean remove(Long c_bno) {
-		log.info("remove..."+c_bno);
-		return mapper.delete(c_bno)==1;	}
+	public boolean remove(Long bno) {
+		log.info("remove..."+bno);
+		return mapper.delete(bno)==1;	}
 
 //	@Override
 //	public List<BoardVO> getList() {

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class CompanyBoardVO {
 	
-	private long c_bno;
+	private long bno;
 	private String title;
 	private int cno;
 	private String content;

@@ -18,9 +18,9 @@ public interface CompanyBoardMapper {
 	
 	public Integer insertSelectKey(CompanyBoardVO c_board);
 	
-	public CompanyBoardVO read(Long c_bno); 
+	public CompanyBoardVO read(Long bno); 
 	
-	public int delete(Long c_bno);
+	public int delete(Long bno);
 	
 	public int update(CompanyBoardVO c_board);
 

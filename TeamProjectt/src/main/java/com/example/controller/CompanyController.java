@@ -52,6 +52,7 @@ public class CompanyController {
 		model.addAttribute("company", service.get(cno));
 		
 	}
+	
 //	@GetMapping("/list")//1.목록 조회
 //	public void list(Model model) {
 //		log.info("list");
