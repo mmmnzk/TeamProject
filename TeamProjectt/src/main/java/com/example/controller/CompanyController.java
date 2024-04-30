@@ -53,11 +53,11 @@ public class CompanyController {
 		
 	}
 	
-	@GetMapping("/list")//1.목록 조회
-	public void list(Model model) {
-		log.info("list");
-		model.addAttribute("list",service.getList());
-	}
+//	@GetMapping("/list")//1.목록 조회
+//	public void list(Model model) {
+//		log.info("list");
+//		model.addAttribute("list",service.getList());
+//	}
 	
 //	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
