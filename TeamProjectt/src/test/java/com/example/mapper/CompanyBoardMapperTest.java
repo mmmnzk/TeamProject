@@ -97,8 +97,10 @@ public class CompanyBoardMapperTest {
 //		10개씩 3페이지
 		cri.setPageNum(2);
 		cri.setAmount(5);
+		
+		
 
-		List<CompanyBoardVO> list = mapper.getListWithPaging(cri);
+		List<CompanyBoardVO> list = mapper.getListWithPaging(cri, 2L);
 		
 		list.forEach(c_board->log.info(c_board));
 		
@@ -119,7 +121,7 @@ public class CompanyBoardMapperTest {
 		cri.setKeyword("고구려");
 		cri.setType("TCW");
 		
-		List<CompanyBoardVO> list = mapper.getListWithPaging(cri);
+		List<CompanyBoardVO> list = mapper.getListWithPaging(cri,2L);
 		
 		list.forEach(c_board -> log.info(c_board ));
 		}

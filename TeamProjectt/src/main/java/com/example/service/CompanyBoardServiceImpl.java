@@ -50,10 +50,11 @@ public class CompanyBoardServiceImpl implements CompanyBoardService {
 //		return mapper.getList();
 //	}
 	@Override
-	public List<CompanyBoardVO> getList(Criteria cri){
+	public List<CompanyBoardVO> getList(Criteria cri, Long cno){
 		log.info("get List with criteria: " + cri);
+		log.info("cno: " + cno);
 		
-		return mapper.getListWithPaging(cri);
+		return mapper.getListWithPaging(cri, cno);
 	}
 	
 	@Override

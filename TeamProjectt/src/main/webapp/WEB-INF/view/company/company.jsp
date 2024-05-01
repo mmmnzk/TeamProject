@@ -122,7 +122,7 @@
      
    <div class="row" >
          <div class="box col-lg-8 shadow mb-4" style=" margin:30px; width:1290px; height:1000px; ">
-           <div class="widget-user-header text-white" style="background: url('/resources/img/company_img.png') center center; height:300px;">
+           <div class="widget-user-header text-white" style="background: url('/TeamProjectt/resources/img/company_img.png') center center; height:300px;">
             <div class="box_head" style="margin: 10px 0px 0px 0px;"> 
             
 <div class="img-overlay">
@@ -137,7 +137,7 @@
 <!--              <h3 style="position: absolute; margin:50px 20px;">회사 정보</h3> -->
 <!--             <img src="qqq.png" style="width:1270px; height:300px; margin:auto;"> -->
             </div>
-             <div><img src="/resources/img/samsung.png" style="width:100px; height:100px; position: absolute; margin:-50px 80px;">
+             <div><img src="/TeamProjectt/resources/img/samsung.png" style="width:100px; height:100px; position: absolute; margin:-50px 80px;">
              </div>
             <div class=" " >
    <div class="c_info" style="max-height: 300px; overflow:auto; margin:80px;"> 
@@ -169,32 +169,8 @@
 <li class="nav-item">관련 게시글</li>
 </ul>
 </div>
-<!-- <div class="card-body" style="max-height: 300px; overflow:auto;">  -->
-<!-- 			     <table class="table table-hover" style="margin:auto; "> -->
-<!-- 			       <thead style="text-align:center"> -->
-			       
-<!-- 			         <tr> -->
-<!-- 			           <th scope="col">제목</th> -->
-<!-- 			           <th scope="col">작성자</th> -->
-<!-- 			           <th scope="col">작성일</th> -->
-<!-- 			         </tr> -->
-<!-- 			       </thead> -->
-<%-- 			       <c:forEach items="${list}" var="board"> --%>
-<!-- 			        <tbody style="text-align:center"> -->
-<!-- 		                     	<tr scope="row" class="table-Default"> -->
-<!-- 		                     		<th > -->
-<%-- 									<a class='move' href='<c:out value="${c_board.bno }"/>'> --%>
-<%-- 										<c:out value="${c_board.title }"/> --%>
-<!-- 									</a> -->
-<!-- 	                        		</th> -->
-<%-- 		                     		<th><c:out value="${c_board.writer}" /></th> --%>
-<%-- 	                        		<th><c:out value="${c_board.regdate }"/></th> --%>
-<!-- 	                        	</tr> -->
-<!--                      </tbody> -->
-<%--                      </c:forEach> --%>
-<!-- 			         </table> -->
-<!--                  </div> -->
-</div>
+<div class="card-body" style="max-height: 300px; overflow:auto;"> 
+
 
 
 
@@ -204,14 +180,14 @@
 <div class="post clearfix">
 <div class="user-block">
 <c:forEach items="${list}" var="c_board">
-<img class="img" src="/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
+<img class="img" src="/TeamProjectt/resources/img/user_img2.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
 <span class="username"><c:out value="${c_board.writer}"/></span>
 <span class="description">(<c:out value="${c_board.regdate }"/>)</span>
 </div>
 
 <p>
 <a class='move' href='<c:out value="${c_board.bno }"/>'>
-										<c:out value="${c_board.title }"/>
+<c:out value="${c_board.title }"/>
 </p>
 <p>
 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
@@ -223,41 +199,51 @@
 </p>
 </c:forEach>
 </div>
-
-<div class="post clearfix">
-<div class="user-block">
-<img class="img" src="/resources/img/user_img.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;">
-<span class="username">강감찬</span>
-<span class="description">(7:30 PM today)</span>
+                 </div>
 </div>
 
-<p>
-게시물 제목
-</p>
-<p>
-<a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-<span class="float-right">
-<a href="#" class="link-black text-sm">
-<i class="far fa-comments mr-1"></i> Comments (5)
-</a>
-</span>
-</p>
-</div>
+
+
+
+
+
+
+
+
+<!-- <div class="post clearfix"> -->
+<!-- <div class="user-block"> -->
+<!-- <img class="img" src="/resources/img/user_img.png" style="border-radius: 50%; width: 30px; height: 30px; margin: 10px;"> -->
+<!-- <span class="username">강감찬</span> -->
+<!-- <span class="description">(7:30 PM today)</span> -->
+<!-- </div> -->
+
+<!-- <p> -->
+<!-- 게시물 제목 -->
+<!-- </p> -->
+<!-- <p> -->
+<!-- <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a> -->
+<!-- <span class="float-right"> -->
+<!-- <a href="#" class="link-black text-sm"> -->
+<!-- <i class="far fa-comments mr-1"></i> Comments (5) -->
+<!-- </a> -->
+<!-- </span> -->
+<!-- </p> -->
+<!-- </div> -->
 
 </div>
 
 
   </div>
- <div class=" card col-lg-8 shadow mb-4" style="margin:30px; width:390px; height:400px;">
-            <div class="card-head" style="margin: 10px 0px 0px 0px;"> 
-             <h5>Chat</h5>
-             <hr style="width:100%; ">
-            </div>
-                 <div class="card-body" style="max-height: 300px; overflow:auto;"> 
+<!--  <div class=" card col-lg-8 shadow mb-4" style="margin:30px; width:390px; height:400px;"> -->
+<!--             <div class="card-head" style="margin: 10px 0px 0px 0px;">  -->
+<!--              <h5>Chat</h5> -->
+<!--              <hr style="width:100%; "> -->
+<!--             </div> -->
+<!--                  <div class="card-body" style="max-height: 300px; overflow:auto;">  -->
                     
                     
-                 </div>
-          </div>
+<!--                  </div> -->
+<!--           </div> -->
   </div>
 
 

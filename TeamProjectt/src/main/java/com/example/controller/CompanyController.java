@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.domain.CompanyBoardVO;
 import com.example.domain.CompanyVO;
 import com.example.domain.Criteria;
 import com.example.domain.PageDTO;
 import com.example.service.CompanyService;
+import com.example.service.CompanyBoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,6 +28,7 @@ import lombok.extern.log4j.Log4j;
 public class CompanyController {
 	
 	private CompanyService service;
+	private CompanyBoardService boardservice;
 	
 	@GetMapping("/register")
 	public void register() {
@@ -50,23 +53,43 @@ public class CompanyController {
 	public void company(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("/company");
 		model.addAttribute("company", service.get(cno));
-		
+		model.addAttribute("list", boardservice.getList(cri, cno));
 	}
+//	@GetMapping("/list")//3.검색
+//	public void list(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
+//		log.info("/list"+cri);
+//		model.addAttribute("list", boardservice.getList(cri));
+//		
+//	}
+	
+//	@GetMapping("/companyBoard")
+//	public void companyBoard(@RequestParam("bno") Long bno,Criteria cri, Model model) {
+//		log.info("companyBoard: "+cri);
+//		model.addAttribute("companyBoard",boardservice.getList(cri));
+//		
+//		int total = service.getTotal(cri);
+//				
+//				log.info("total: "+total);
+//				
+//				model.addAttribute("pageMaker", new PageDTO(cri,total));
+//	}
+	
+	
 	
 //	@GetMapping("/list")//1.목록 조회
 //	public void list(Model model) {
 //		log.info("list");
-//		model.addAttribute("list",service.getList());
+//		model.addAttribute("list",boardservice.getList());
 //	}
 	
 //	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
+	public void list(Criteria cri, Model model,@RequestParam("cno") Long cno) {
 		
 		log.info("list: "+cri);
-		model.addAttribute("list",service.getList(cri));
-//		model.addAttribute("pageMaker",new PageDTO(cri,223));
+		model.addAttribute("list",boardservice.getList(cri, cno));
+		model.addAttribute("pageMaker",new PageDTO(cri,223));
 		
-		int total = service.getTotal(cri);
+		int total = boardservice.getTotal(cri);
 		
 		log.info("total: "+total);
 		

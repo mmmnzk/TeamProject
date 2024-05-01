@@ -16,7 +16,7 @@ public interface CompanyBoardService {
 	
 //	public List<BoardVO> getList();
 	
-	public List<CompanyBoardVO> getList(Criteria cri);
+	public List<CompanyBoardVO> getList(Criteria cri, Long cno);
 
 	public int getTotal(Criteria cri);
 	

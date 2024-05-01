@@ -76,8 +76,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					from
 						company_board
 					where
+						cno = #{cno}
+					and	
 		]]>
-			<include refid="criteria"></include>
+<!-- 			<include refid="criteria"></include> -->
 <!-- 			<trim prefix="(" suffix=")AND" prefixOverrides="OR"> -->
 <!-- 				<foreach item='type' collection="typeArr"> -->
 <!-- 					<trim prefix="OR"> -->
@@ -97,10 +99,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 			</trim> -->
 		
 		<![CDATA[
-						rownum <= #{pageNum} * #{amount}
+						rownum <= #{cri.pageNum} * #{cri.amount}
 				)
 			where
-					rn > (#{pageNum}-1) * #{amount}
+					rn > (#{cri.pageNum}-1) * #{cri.amount}
 		
 		]]>
 	</select>
